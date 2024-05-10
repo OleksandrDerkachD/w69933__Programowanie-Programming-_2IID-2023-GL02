@@ -1,44 +1,128 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>lab 7-8</title>
-    <script src="lab7-8.js"></script>
+    <meta charset="utf-8"/>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            width: 300px;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 20px;
+        }
+
+        .control {
+            padding: 5px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .actions {
+            justify-content: center;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+<title>lab 7-8</title>
+<script src="lab7-8.js"></script>
 </head>
 <body>
-<form id="myForm" action="#" method="post">
-<label for="name">Imię:</label>
-<input type="text" id="name" name="name" required>
+    <form id="myForm" action="#" method="post">
+        <div class="control">
+            <label for="name">Imię:</label>
+            <input type="text" id="name" name="name" required>
+            <span class="error"></span>
+        </div>
 <br>
-<label for="surname">Nazwisko:</label>
-<input type="text" id="surname" name="surname" required>
+        <div class="control"></div>
+            <label for="surname">Nazwisko:</label>
+            <input type="text" id="surname" name="surname" required>
+        </div>
 <br>
-<label for="email">Email:</label>
-<input type="email" id="email" name="email" required>
+        <div class="control"></div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <span class="error"></span>
+        </div>
 <br>
-<label for="phone">Telefon:</label>
-<input type="tel" id="phone" name="phone" pattern="[0-9]{9}" required>
+        <div class="control">
+            <label for="phone">Telefon:</label>
+            <input type="text" id="phone" name="phone" required>
+            <span class="error"></span>
+        </div>
 <br>
-<label for="password">Hasło:</label>
-<input type="password" id="password" name="password" pattern=".{8,}" title="Hasło musi zawierać co najmniej 8 znaków" required>
+        <div class="control"></div>
+            <label for="password">Hasło:</label>
+            <input type="password" id="password" name="password" pattern=".{8,}" title="Hasło musi zawierać co najmniej 8 znaków" required>
+            <span class="error"></span>
+        </div>
 <br>
-<label>Płeć:</label>
-<input type="radio" name="gender" id="M"value="M" required>
-<label for="M">M</label>
-<input type="radio" name="gender" id="K"value="K" required>
-<label for="K">K</label>
+        <div class="control">
+            <label>Potwórz Hasło: </label>
+            <input type="password" name="confirm-password">
+            <span class="error"></span>
+        </div>
+
 <br>
-<label for="dob">Data urodzenia:</label>
-<input type="date" id="dob" name="dob" required>
+        <div class="control">
+            <label>Płeć:</label>
+            <div>
+                <input type="radio" name="gender" id="M"value="M" required>
+                <label for="M">M</label>
+                <input type="radio" name="gender" id="K"value="K" required>
+                <label for="K">K</label>
+            </div>
+            <span id="genderError" class="error"></span>
+        </div>
 <br>
-<label for="country">Kraj:</label>
-<select id="country" name="country" required>
-    <option value="Ukraine">Ukraine</option>
-    <option value="Poland">Poland</option>
-    <option value="Other">Other</option>
+        <div class="control">
+            <label for="dob">Data urodzenia:</label>
+            <input type="date" id="dob" name="dob" required>
+            <span class="error"></span>
+        </div>
+<br>
+        <div class="control"></div>
+            <label for="country">Kraj:</label>
+            <select id="country" name="country" required>
+                <option value="Ukraine">Ukraine</option>
+                <option value="Poland">Poland</option>
+                <option value="Other">Other</option>
+            </select>
+            <span class="error"></span>
+        </div>
+<br>
+<label for="province">Województwo:</label>
+<select id="province" name="province" disabled>
 </select>
-<br>
-<input type="submit" value="Zapisz">
-</form>
+<span class="error" id="provinceError"></span>
+
+<label for="address">Adres zamieszkania:</label>
+<input type="text" id="address" name="address" disabled>
+<span class="error" id="addressError"></span>
+
+<label>
+  <input type="checkbox" name="hasSameContactAddress" checked>
+</label>
+
+<label for="contactAddress" id="contactAddressLabel" style="display:none;">
+  Adres korespondencyjny:
+</label>
+<input type="text" id="contactAddress" name="contactAddress" disabled style="display:none;">
+<span class="error" id="contactAddressError"></span>
+
+        <div class="control actions">
+            <input type="submit" value="Zapisz">
+        </div>
+    </form>
 </body>
+
+</html>
